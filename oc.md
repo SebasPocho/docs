@@ -1,0 +1,88 @@
+## Ver BC:
+
+```
+oc get bc
+```
+
+## Ver Builds:
+
+```
+oc get builds
+```
+
+## Borrar Builds:
+
+```
+oc delete build $(oc get build|grep "Failed\|Cancelled")
+```
+
+## create Secret:
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sql
+type: Opaque
+stringData:
+  PASSWORD: nueva12345
+  USER:  dhbrm01m
+  ```
+ 
+
+ 
+## delete pod:
+
+```
+oc delete pod  <podname> --grace-period=0 --force
+```
+
+
+## limits:
+
+```
+oc edit limits limits
+```
+
+## route timeout:
+
+```
+oc annotate route <routename> --overwrite haproxy.router.openshift.io/timeout=300s
+```
+
+## mount secret en pv:
+```
+oc set volume dc/case-query --add -t secret --secret-name=secret-certificate -m /opt/certificate
+```
+
+## unmount secret en pv:
+
+```
+oc set volumes dc/consultasolicituddynamics --remove=true --mount-path='/opt/keystore' --confirm
+```
+
+## Copiar logs desde pod:
+
+```
+oc rsync offer-command-17-7sm2m:/tmp/appd/dotnet/1_agent_0.log /devops/shorton/logsAppd/
+```
+
+## Instalar Jaeger:
+
+```
+oc new-app jaegertracing/all-in-one:1.20.0 --name=jaegertracing-all-in-one -n <namespace> && oc expose svc jaegertracing-all-in-one --port=16686 -n <namespace> 
+oc new-app jaegertracing/all-in-one:1.20.0 --name=jaegertracing-all-in-one -n devo-devops-dev && oc expose svc jaegertracing-all-in-one --port=16686 -n devo-devops-dev
+```
+
+## Flush Redis:
+
+1. redis-cli
+2. auth yourpassword
+3. FLUSHDB command – Delete all the keys of the currently selected DB.
+   FLUSHALL command – Delete all the keys of all the existing databases, not
+ 
+## Fecha Creaciòn proyectos:
+
+```
+oc get projects -o custom-columns=NAME:.metadata.name,CREATED:.metadata.creationTimestamp
+```
