@@ -1,5 +1,4 @@
 # COMANDOS VARIOS
-
 ```
 ps -fp $(pgrep -d, -u userid)
 pkill 
@@ -40,14 +39,12 @@ ls *.tar | xargs -i tar xf {}
 
 
 # QUOTA
-
 ```
 quota -v
 quota <userid>
 ```
 
 # TCP CHECK
-
 ```
 timeout 1 bash -c 'cat < /dev/null > /dev/tcp/<servidor>/<puerto>'
 echo $?
@@ -59,7 +56,6 @@ netstat -nap | awk '/tcp/ {print $6}'| sort | uniq -c
 ```
 
 # TCPDUMP
-
 ```
 tcpdump -i eth1 -s 0 -w /pfmtest.pcap host x.x.x.x (ip address of external server)
 
@@ -79,14 +75,12 @@ host -> ip address of the application server if they only use one.  Otherwise, r
 ```
 
 # SCP
-
 ```
 scp [options] [[user@]host1:]filename1 ...  [[user@]host2:]filename2
 scp file1.txt dvader@deathstar.com:somedir
 ```
 
 # FILE SYSTEM CHECK
-
 ```
 check for / partition: /dev/sda1
 
@@ -104,14 +98,12 @@ fsck -yvf /dev/sda5
 ```
 
 # SSH KEYS
-
 ```
 ssh-keygen -t rsa (crear key)
 ssh-copy-id -i .ssh/id_rsa.pub user@host (para enviar la key, crea solo el authorized_keys)
 ```
 
 # VIRTUAL MACHINES
-
 ```
 * virt-manager (consola de administracion grafica)
 * virsh (abre consola de maquinas virtuales. help da los comandos para correr)
@@ -120,7 +112,6 @@ ssh-copy-id -i .ssh/id_rsa.pub user@host (para enviar la key, crea solo el autho
 ```
 
 # YUM
-
 ```
 system-config-packages (interfaz grafica del YUM)
 rpm -ivh <paquete>
@@ -144,7 +135,6 @@ rpm -ivh <paquete>
 ```
 
 # LOGS
-
 ```
 * /var/log/dmesg
 * /var/log/messages
@@ -160,7 +150,6 @@ rpm -ivh <paquete>
 ```						
 
 # CRON
-
 ```
 * crontab -l (lista el crontab)
 * crontab -e (para editar)
@@ -179,7 +168,6 @@ rpm -ivh <paquete>
 ```
 
 # PRINTERS
-
 ```
 * system-config-printer (interfaz grafica para configurar impresoras)
 * http://localhost:631  (web interface)
@@ -187,21 +175,18 @@ rpm -ivh <paquete>
 ```
 
 # TIME
-
 ```
 * system-config-date
 * /etc/ntp.conf
 ```
 
 # FIREWALL - SELinux
-
 ```
 * system-config-sercuritylevel o system-config-SElinux (interfaz grafica)
 * /etc/sysconfig/selinux
 ```
 
 # SYSTEM INITIALIZATION
-
 ```
 * uname -r --> kernel
 * yum list installed kernel o rpm -qa kernel --> kernels disponibles
@@ -210,7 +195,6 @@ rpm -ivh <paquete>
 ```
 
 # SERVICES
-
 ```
 *system-config-services (interfaz grafica)
 * chkconfig --list <service name>
@@ -218,7 +202,6 @@ rpm -ivh <paquete>
 ```
 
 # KERNEL
-
 ```
 * /etc/sysctl.conf --> IP forwarding.
 * lsmod --> lista modulos cargados
@@ -228,7 +211,6 @@ rpm -ivh <paquete>
 ```
 
 # NETWORK
-
 ```
 * system-config-network (interfaz grafica)
 * system-config-network-tui (interfaz por linea de comando)
@@ -252,7 +234,6 @@ rpm -ivh <paquete>
 ```
 
 # ACL (Access control List)
-
 ```
 * vi /etc/fstab --> Agregar despues de default ",acl"
 * mount -o remount <filesystem>
@@ -264,7 +245,6 @@ rpm -ivh <paquete>
 ```
 
 # NIS
-
 ```
 * authconfig --enable nis --<dominio> --<server> update --> Para habilitar nis en el cliente
 * system-config-authentication --> Interfaz grafica para setear nis o ldap
@@ -282,7 +262,6 @@ rpm -ivh <paquete>
 ```
 
 # RAID
-
 ```
 * fdisk /dev/xxx ---> Crear 1 particion extendida y 3 "FD" (opcion t para cambiar el system id de la particion).
 * partprobe
@@ -296,7 +275,6 @@ rpm -ivh <paquete>
 ```
 
 # LVM
-
 ```
 * fdisk /dev/xxx --> PRIMARIA "8e" (opcion t para cambiar el system id de la particion).
 * pvcreate /dev/xxx ---> le da volumen fisico crea
@@ -321,7 +299,6 @@ Para achicar Logical volumes.
 ```
 
 # AUTOMOUNT
-
 ```
 * showmount -e instructor.example.com --> para ver si esta levantado NFS en el server.
 
@@ -336,7 +313,6 @@ Para achicar Logical volumes.
 ```
 
 # FILE SYSTEM:
-
 ```
 * fdisk /dev/xxx
 * mkfs.ext3 -L <label> /dev/xxxX
@@ -348,7 +324,6 @@ Para achicar Logical volumes.
 ```
 
 # SWAP
-
 ```
 * fdisk /dev/xxx (extendida)
 * t - 82
@@ -360,20 +335,12 @@ Para achicar Logical volumes.
 ```
 
 # MEMORY
-
 ```
  cat /proc/meminfo
  egrep --color 'Mem|Cache|Swap' /proc/meminfo
 ```
 
-# MAPEAR unidad de RED WINDOWS
-
-```
- net use I: <device> /USER:domain\user <passwd>
-```
-
 # Vi: Search and Replace
-
 ```
  First occurrence on current line:      :s/OLD/NEW
  Globally (all) on current line:        :s/OLD/NEW/g 
@@ -382,7 +349,6 @@ Para achicar Logical volumes.
 ```
 
 # ADMIN CONSOLES
-
 ```
  GlassFish:
  https://<hostname>.inetpsa.com:4848
@@ -396,27 +362,23 @@ Para achicar Logical volumes.
 ```
 
 # DB2 connect
-
 ``` 
  db2 CONNECT TO <DB> USER <USER> USING <passwd>
 ```
 
 # ULIMIT
-
 ```
 ulimit -a
 modificar el archivo para que sea permanente --> /etc/security/limits.conf
 ```
 
 # LIBERAR CHACHE MEMORIA
-
 ```
 sync;sysctl -w vm.drop_caches=3
 ```
 
 
 # JAVA
-
 ```
 Thread Dump: jstack {pid} > stack-trace.tdump
 Heap Dump: jmap -dump:live,format=b,file=<filename>.hprof <pid>
@@ -430,7 +392,6 @@ ssl debug:
 ```
 
 ## JAR
-
 ```
 Ver contenido:
 
@@ -444,7 +405,6 @@ jar cmf META-INF/MANIFEST.MF com.sap.banking.banking-core-common_8.3.1.2.jar com
 ```
 
 # Delay Red:
-
 ```
 tc qdisc add dev eth0 root netem delay 3000ms (esto lo pones)
 tc -s qdisc (lista)
@@ -452,7 +412,66 @@ tc qdisc del dev eth0 root netem (quita)
 ```
 
 # SSL:
-
 ```
 openssl s_client -showcerts -connect ppfm.bancogalicia.com.ar:443
+```
+
+
+
+# Scripting Tips
+
+### CHECKEO PARAMETROS:
+```
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied"
+fi
+```
+
+### SHEBANGS:
+```
+bash: #!/bin/bash
+ksh: #!/bin/ksh
+csh: #!/bin/csh
+```
+
+### DATE
+```
+date +%d%m%Y  -----> 18112015 (dias,meses,años)
+date +%Y%m%d%H%M%S ----> 20151118152212  (años,meses,dias,horas,minutos,segundos)
+```
+
+### PARAMETROS DEFAULT:
+```
+$? --> Return Code
+$$ --> PID
+$# --> Cantidad de parametros indicados
+$@ --> sees arguments as separate words
+$* --> sees all arguments as single word
+```
+
+### IF SENTENCES:
+```
+if [ "$ENVIRONMENT" == "d" ]; then  --> Matching caracters
+else
+fi
+
+if [ -d $SERENA_HOME/repository ]; then --> Directory 
+else 
+fi 
+
+if [ "$REPO_CHECK" == "0" ] ; then --> Matching Numeric
+else 
+fi
+```
+
+### REDIRECTION:
+```
+1>filename       # Redirect stdout to file "filename."
+1>>filename      # Redirect and append stdout to file "filename."
+2>filename       # Redirect stderr to file "filename."
+2>>filename      # Redirect and append stderr to file "filename."
+&>filename       # Redirect both stdout and stderr to file "filename."
+2>&1             # Redirects stderr to stdout.
+&>/dev/null      # Redirects every output of a program to /dev/null
 ```
