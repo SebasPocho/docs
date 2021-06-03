@@ -11,6 +11,7 @@ oc get builds
 ## Borrar Builds:
 ```
 oc delete build $(oc get build|grep "Failed\|Cancelled")
+oc delete build $(oc get build|grep "Failed\|Cancelled\|Pending\|New")
 ```
 
 ## Borrar pods:
@@ -80,3 +81,10 @@ oc new-app jaegertracing/all-in-one:1.20.0 --name=jaegertracing-all-in-one -n de
 oc get projects -o custom-columns=NAME:.metadata.name,CREATED:.metadata.creationTimestamp
 ```
 
+## Secrets tipo keystore:
+```
+oc create secret generic keystore --from-file=keystore.jks=keystore.jks --type=opaque
+
+oc set volume dc/consultasolicitud --add -t secret --secret-name=keystore -m /opt/keystore
+
+```

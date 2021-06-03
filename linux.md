@@ -475,3 +475,18 @@ fi
 2>&1             # Redirects stderr to stdout.
 &>/dev/null      # Redirects every output of a program to /dev/null
 ```
+
+### Keystore JKS
+```
+
+keytool -genkey -alias keystore -keyalg RSA -keystore keystore.jks -keysize 2048
+keytool -import -trustcacerts -alias CA -file sica01b64.cer -keystore keystore.jks
+keytool -import -trustcacerts -alias SubCA -file isicab64.cer -keystore keystore.jks
+
+keytool -list -v -keystore /opt/keystore/keystore.jks
+
+JAVA_OPTIONS=-Djavax.net.ssl.keyStorePassword=${KEY_PASSWORD} -Djavax.net.ssl.keyStore=/opt/keystore.jks/keystore.jks -Djavax.net.ssl.trustStorePassword=${KEY_PASSWORD} -Djavax.net.ssl.trustStore=/opt/keystore.jks/keystore.jks
+
+-Djavax.net.debug=ssl,handshake
+
+```
