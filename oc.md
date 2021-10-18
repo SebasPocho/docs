@@ -88,3 +88,9 @@ oc create secret generic keystore --from-file=keystore.jks=keystore.jks --type=o
 oc set volume dc/consultasolicitud --add -t secret --secret-name=keystore -m /opt/keystore
 
 ```
+## Rsync a pod:
+```
+oc rsync --progress=true <from> <podname>:<ruta en el pod>
+oc rsync --progress=true staticdevops/ onb-cdn-web-5-n9tc7:/opt/app-root/etc/nginx.d/devopsmaster
+
+```
