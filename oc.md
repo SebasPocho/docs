@@ -55,6 +55,9 @@ oc set volume dc/case-query --add -t secret --secret-name=secret-certificate -m 
 ## unmount secret en pv:
 ```
 oc set volumes dc/consultasolicituddynamics --remove=true --mount-path='/opt/keystore' --confirm
+
+oc set volumes dc/apisdesk  --remove=true --name='appd-agent-repo' --confirm
+
 ```
 
 ## Copiar logs desde pod:
@@ -93,4 +96,6 @@ oc set volume dc/consultasolicitud --add -t secret --secret-name=keystore -m /op
 oc rsync --progress=true <from> <podname>:<ruta en el pod>
 oc rsync --progress=true staticdevops/ onb-cdn-web-5-n9tc7:/opt/app-root/etc/nginx.d/devopsmaster
 
+oc rsync --progress=true <podname>:<ruta en el pod> <to> 
+oc rsync odretriever-16-vqqlv:/opt/ibm/odwek/V10.5/www/api/ODApi.jar /devops/shorton/odwekjar/ 
 ```

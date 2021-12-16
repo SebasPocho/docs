@@ -18,7 +18,8 @@ find . -type f -mtime +30 -name "SFTP*" -exec rm -rf {} \;
 find . -type f -size 2659992 -exec rm -rf {} \;
 find . -type f -mtime +90 -exec mv '{}'  \;
 find . -type f -exec grep -i “db2smpd” {} \; -print 2>/dev/null
-find . -type f *.xls
+find . -type f *.log
+find / -type f *.log
 find . -type f -mtime +30 -exec rm -rf {} \;
 ```
 ```
