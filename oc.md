@@ -17,6 +17,8 @@ oc delete build $(oc get build|grep "Failed\|Cancelled\|Pending\|New")
 ## Borrar pods:
 ```
 oc delete pod $(oc get pod|grep "Error\|CreateContainerConfigError\|CrashLoopBackOff\|Completed" | awk '{print $1}')
+
+for p in $(oc get pods | grep "Error\|CreateContainerConfigError\|CrashLoopBackOff\|Completed" | awk '{print $1}'); do oc delete pod $p --grace-period=0 --force;done
 ```
 
 ## create Secret:
@@ -98,4 +100,9 @@ oc rsync --progress=true staticdevops/ onb-cdn-web-5-n9tc7:/opt/app-root/etc/ngi
 
 oc rsync --progress=true <podname>:<ruta en el pod> <to> 
 oc rsync odretriever-16-vqqlv:/opt/ibm/odwek/V10.5/www/api/ODApi.jar /devops/shorton/odwekjar/ 
+```
+
+## Top pods:
+```
+oc adm top pods | grep "cap-impersonal-auth-controller-v2-40*"
 ```
