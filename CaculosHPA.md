@@ -1,4 +1,3 @@
-
 Minimo request cpu: 20ml
 Maximo request cpu: 1 core
 
@@ -15,6 +14,21 @@ consumo CPU   ---     Config CPU Request %       ---   CPU millicore
 20 -- 100%
 700 -->  3500
 
+Minimo request cpu: 20ml
+Maximo request cpu: 700ml
+
+consumo CPU   ---     Config CPU Request %       ---   CPU millicore
+	 40%     ----->			2000			 ----------> 400 ml
+     50%     ----->         2500			 ----------> 500 ml
+     60%     ----->         3000             ----------> 600 ml
+	 65%     ----->         3250             ----------> 650 ml
+     70%     ----->         3500			 ----------> 700 ml
+	 75%     ----->			3750			 ----------> 750 ml
+     80%     ----->         4000			 ----------> 800 ml
+	 85%	 ----->	  		4250			 ----------> 850 ml
+
+20 -- 100%
+700 -->  3500
 
 Minimo request cpu: 20ml
 Maximo request cpu: 500 ml
